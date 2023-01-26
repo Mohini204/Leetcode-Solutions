@@ -3,23 +3,32 @@ from collections import defaultdict
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         
-        def defVal():
-            return 'None'
-        
-        d = defaultdict(defVal)
+        count = [0]*27
         
         for ch in s:
-            d[ch] = d.get(ch,0) + 1
+            count[ord(ch)-ord('a')] += 1
             
         for ch in t:
-            if d[ch] == 'None':
+            if count[ord(ch)-ord('a')] == 0:
                 return False
             else:
-                d[ch] -= 1
-            
-        for ch in d:
-            if d[ch] != 0:
+                count[ord(ch)-ord('a')] -= 1
+                
+        for i in count:
+            if i != 0:
                 return False
             
         return True
+                
+        
+  
+        
+        
+        
+        
+        
+        
+        
+        
+    
             
