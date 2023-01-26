@@ -3,16 +3,14 @@ from collections import defaultdict
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         
+        if len(s) != len(t):
+            return False
+        
         count = [0]*27
         
-        for ch in s:
-            count[ord(ch)-ord('a')] += 1
-            
-        for ch in t:
-            if count[ord(ch)-ord('a')] == 0:
-                return False
-            else:
-                count[ord(ch)-ord('a')] -= 1
+        for ch in range(len(s)):
+            count[ord(s[ch])-ord('a')] += 1
+            count[ord(t[ch])-ord('a')] -= 1
                 
         for i in count:
             if i != 0:
