@@ -6,8 +6,7 @@ class Solution:
         if k == 0 or len(nums) == 1:
             return
         
-        while k>len(nums):
-            k = k-len(nums)
+        k %= len(nums)
             
         if k == len(nums):
             return
