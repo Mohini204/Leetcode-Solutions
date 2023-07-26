@@ -7,8 +7,7 @@ class Solution:
         if k == 0 or k == len(nums) or len(nums) == 1:
             return 
         
-        if k > len(nums):
-            k = k%len(nums)
+        k = k%len(nums)
         
         temp = []
         for i in range(len(nums)-k):
