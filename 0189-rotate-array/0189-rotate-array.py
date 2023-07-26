@@ -3,34 +3,28 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        if k == 0 or len(nums) == 1:
-            return
         
-        k %= len(nums)
+        if k == 0 or k == len(nums) or len(nums) == 1:
+            return 
+        
+        if k > len(nums):
+            k = k%len(nums)
+        
+        temp = []
+        for i in range(len(nums)-k):
+            temp.append(nums[i])
             
-        if k == len(nums):
-            return
-        
-        rev = []
-        
-        for i in range(0,len(nums)-k):
-            rev.append(nums[i])
-        
-        i = len(nums)-k
         j = 0
-        
-        while i < len(nums):
+        for i in range(len(nums)-k,len(nums)):
             nums[j] = nums[i]
-            i+=1
             j+=1
             
-        j=0
-        
-        
+        j = 0
         for i in range(k,len(nums)):
-            nums[i] = rev[j]
+            nums[i] = temp[j]
             j+=1
             
+        
         
         
         
